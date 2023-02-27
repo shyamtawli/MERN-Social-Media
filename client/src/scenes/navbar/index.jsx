@@ -40,7 +40,7 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = "Shyam Tawli";
+  const fullName = `Shyam Tawli`;
 
   return (
     <FlexBetween padding="1rem" backgroundColor={alt}>
@@ -105,7 +105,7 @@ const Navbar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem>
+              <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
@@ -175,7 +175,7 @@ const Navbar = () => {
                 }}
                 input={<InputBase />}
               >
-                <MenuItem>
+                <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
