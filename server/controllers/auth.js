@@ -23,7 +23,7 @@ export const register = async (req, res) => {
             firstName,
             lastName,
             email,
-            passwordHash,
+            password: passwordHash,
             picturePath,
             friends,
             location,
@@ -43,11 +43,11 @@ export const register = async (req, res) => {
 // LOGINING IN
 export const login = async (req, res) => {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
         const user = await User.findOne({ email: email });
         if(!user) return res.status(400).json({ msg: "User does not exits"});
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = bcrypt.compare(password, user.password);
         if(!isMatch) return res.status(400).json({ msg: "Invalid Password"});
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
